@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    height: 300vh; /* 確保有足夠的滾動空間 */
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    padding: 50px;
+    gap: 50px;
+}
+.image-section{
+    display: flex;
+    width: 45%;
+    position: relative;
+}
+.text-section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    
+    width: 45%;
+    position: relative;
+}
+.text{
+    opacity: 1;
+    transform-origin: right;
+    font-size: 2rem;
+}
+.image {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.image {
+    width: 100%;
+    height: auto;
+}
