@@ -11,7 +11,7 @@ images.forEach(img => gsap.set(img, { opacity: 0 }));
 ScrollTrigger.create({
     trigger: ".scroll-change-text-and-img",
     start: "top top",  // 开始时顶部对齐
-    end: () => "+=" + (window.innerHeight * texts.length),  // 根据文本数量来设置滚动范围
+    end: () => "+=" + (window.innerHeight * texts.length/3),  // 根据文本数量来设置滚动范围
     pin: true,  // 固定内容
     scrub: 1,  // 平滑滚动
     onUpdate: self => {
