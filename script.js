@@ -1,20 +1,21 @@
+// 初始化 ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 const texts = gsap.utils.toArray('.text');
 const images = gsap.utils.toArray('.content-col');
 
-// 初始化時隱藏所有圖片
+// 初始化时隐藏所有图片
 images.forEach(img => gsap.set(img, { opacity: 0 }));
 
-// 創建滾動觸發器
+// 创建滚动触发器
 ScrollTrigger.create({
     trigger: ".scroll-change-text-and-img",
-    start: "top top",  // 開始時頂部對齊
-    end: () => "+=" + (window.innerHeight * texts.length),  // 根據文本數量來設置滾動範圍
-    pin: true,  // 固定內容
-    scrub: 1,  // 平滑滾動
+    start: "top top",  // 开始时顶部对齐
+    end: () => "+=" + (window.innerHeight * texts.length),  // 根据文本数量来设置滚动范围
+    pin: true,  // 固定内容
+    scrub: 1,  // 平滑滚动
     onUpdate: self => {
-        let index = Math.floor(self.progress * texts.length);  // 根據滾動進度計算當前顯示的內容
+        let index = Math.floor(self.progress * texts.length);  // 根据滚动进度计算当前显示的内容
         switchContent(index);
     }
 });
@@ -29,17 +30,31 @@ function switchContent(index) {
     });
     images.forEach((col, i) => {
         gsap.to(col, {
-            scale:1,
+            scale: 1,
             opacity: i === index ? 1 : 0,
             duration: 1,
+            display: i === index ? 'flex' : 'none', // 使用字符串
         });
     });
 }
-// 確保在頁面加載時，第一個 .content-col 已經顯示
+
+// 确保在页面加载时，第一个 .content-col 已经显示
 document.addEventListener('DOMContentLoaded', () => {
-    switchContent(0); // 設置初始狀態
+    switchContent(0); // 设置初始状态
+    ScrollTrigger.refresh(); // 初次载入时刷新 ScrollTrigger
 });
-// 計算滾動範圍並設置 footer 位置
-const scrollRange = window.innerHeight * texts.length;  // 計算滾動範圍
+
+// 记录当前窗口宽度
+let currentWidth = window.innerWidth;
+
+// 在窗口大小变化时，检查宽度变化并重新加载页面
+window.addEventListener('resize', () => {
+    if (window.innerWidth !== currentWidth) {
+        location.reload();  // 重新加载页面
+    }
+});
+
+// 计算滚动范围并设置 footer 位置
+const scrollRange = window.innerHeight * texts.length;  // 计算滚动范围
 const footer = document.querySelector('.footer');
-footer.style.marginTop = `${scrollRange}px`;  // 根據滾動範圍設置 footer 的 margin-top
+footer.style.marginTop = `${scrollRange}px`;  // 根据滚动范围设置 footer 的 margin-top
