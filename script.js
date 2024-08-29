@@ -1,7 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
 const texts = gsap.utils.toArray('.text');
-const images = gsap.utils.toArray('.image');
+const images = gsap.utils.toArray('.content-col');
 
 // 初始化時隱藏所有圖片
 images.forEach(img => gsap.set(img, { opacity: 0 }));
@@ -21,9 +21,16 @@ ScrollTrigger.create({
 
 function switchContent(index) {
     texts.forEach((text, i) => {
-        gsap.to(text, { opacity: i === index ? 1 : 0.2, duration: 1,scale: i === index ? 1.3 : 1 });
+        gsap.to(text, {
+            opacity: i === index ? 1 : 0.2,
+            duration: 1,
+            scale: i === index ? 1.3 : 1
+        });
     });
     images.forEach((img, i) => {
-        gsap.to(img, { opacity: i === index ? 1 : 0, duration: 1 });
+        gsap.to(img, {
+            opacity: i === index ? 1 : 0,
+            duration: 1,
+        });
     });
 }
