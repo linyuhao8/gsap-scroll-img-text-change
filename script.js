@@ -55,6 +55,6 @@ window.addEventListener('resize', () => {
 });
 
 // 计算滚动范围并设置 footer 位置
-const scrollRange = window.innerHeight * texts.length;  // 计算滚动范围
+const scrollRange = window.innerHeight * texts.length/3;  // 计算滚动范围
 const footer = document.querySelector('.footer');
 footer.style.marginTop = `${scrollRange}px`;  // 根据滚动范围设置 footer 的 margin-top
