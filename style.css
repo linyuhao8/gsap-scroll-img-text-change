@@ -7,7 +7,7 @@ body {
     color:#fff;
 }
 
-.container {
+.gsap-scroll-img-text-change-container {
     height: 100vh;
     width:100%;
     box-sizing: border-box;
@@ -23,7 +23,7 @@ body {
     padding: 0px;
     gap: 30px;
 }
-.text-section-flex {
+.scroll-change-text-section-flex {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -31,13 +31,13 @@ body {
     width: 40%;
     height: 100vh;
 }
-.text-section{
+.scroll-change-text-section{
     display: flex;
     flex-direction: column;
     align-items: flex-end; 
     width: auto;
 }
-.text {
+.scroll-change-text {
     width: auto;
     border: 1px solid #fff;
     padding: 2px 25px;
@@ -49,12 +49,12 @@ body {
     flex: 0 0 auto;
 }
 
-.text:first-child {
+.scroll-change-text:first-child {
     opacity: 1;
     transform: scale(1);
 }
 
-.content-section {
+.scroll-change-content-section {
     position: relative;
     display: flex;
     flex-direction: column; 
@@ -62,7 +62,7 @@ body {
     height: 100vh;
 }
 
-.content-col {
+.scroll-change-content-col {
     opacity: 0;
     height: 100%;
     width: 100%;
@@ -73,14 +73,14 @@ body {
     justify-content: center;
 }
 
-.content-col:first-child {
+.scroll-change-content-col:first-child {
     opacity: 1;
 }
-.content-text{
+.scroll-change-content-text{
     width:70%;
 }
 
-.image {
+.scroll-change-img {
     width: 70%;
     border: 1px solid #e0e0e0;
     border-radius: 30px;
@@ -97,7 +97,7 @@ body {
         padding: 0px;
         gap: 0px;
     }
-    .text-section-flex{
+    .scroll-change-text-section-flex{
         height: auto;
         width: 100%;
         row-gap:20px;
@@ -106,35 +106,35 @@ body {
         justify-content: center;
         flex-wrap: nowrap;
     }
-    .text-section:first-child  {
+    .scroll-change-text-section:first-child  {
         align-items: flex-end;
         transform-origin: right;
     }
-    .text-section:nth-child(2) {
+    .scroll-change-text-section:nth-child(2) {
         align-items: flex-start; 
         transform-origin: left;
     }
-    .text-section:first-child .text {
+    .scroll-change-text-section:first-child .scroll-change-text {
         transform-origin: right; 
     }
 
-    .text-section:nth-child(2) .text {
+    .scroll-change-text-section:nth-child(2) .scroll-change-text {
         transform-origin: left; 
     }
-    .text{
+    .scroll-change-text{
         font-size: 20px;
         white-space: nowrap;
     }
-    .content-section {
+    .scroll-change-content-section {
         position: relative;
         display: flex;
         flex-direction: column; 
         justify-content: center; 
         align-items: center;
-        width: 90%;
+        width: 100%;
         height: 50%;
     }
-    .content-text,.image{
+    .scroll-change-content-text,.scroll-change-img{
         width:90%;
     }
 }

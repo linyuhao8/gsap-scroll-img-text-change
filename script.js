@@ -1,8 +1,8 @@
 // 初始化 ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-const texts = gsap.utils.toArray('.text');
-const images = gsap.utils.toArray('.content-col');
+const texts = gsap.utils.toArray('.scroll-change-text');
+const images = gsap.utils.toArray('.scroll-change-content-col');
 
 // 初始化时隐藏所有图片
 images.forEach(img => gsap.set(img, { opacity: 0 }));
