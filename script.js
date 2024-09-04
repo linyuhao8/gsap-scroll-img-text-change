@@ -14,6 +14,7 @@ ScrollTrigger.create({
     end: () => "+=" + (window.innerHeight * texts.length/3),  // 根据文本数量来设置滚动范围
     pin: true,  // 固定内容
     scrub: 1,  // 平滑滚动
+    markers: true,
     onUpdate: self => {
         let index = Math.floor(self.progress * texts.length);  // 根据滚动进度计算当前显示的内容
         switchContent(index);
@@ -47,14 +48,24 @@ document.addEventListener('DOMContentLoaded', () => {
 // 记录当前窗口宽度
 let currentWidth = window.innerWidth;
 
+// 防抖动函数
+function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
 // 在窗口大小变化时，检查宽度变化并重新加载页面
-window.addEventListener('resize', () => {
+window.addEventListener('resize', debounce(() => {
     if (window.innerWidth !== currentWidth) {
         location.reload();  // 重新加载页面
     }
-});
+}, 1000));  // 设置200毫秒的延迟
+
 
 // 计算滚动范围并设置 footer 位置
 const scrollRange = window.innerHeight * texts.length/3;  // 计算滚动范围
-const footer = document.querySelector('.footer');
+const footer = document.querySelector('#home-section6');
 footer.style.marginTop = `${scrollRange}px`;  // 根据滚动范围设置 footer 的 margin-top
